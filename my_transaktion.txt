@@ -1,0 +1,6 @@
+('Sebastianmentor', 100, 'Insättning', datetime.datetime(2024, 1, 9, 14, 52, 4, 475958))
+('Sebastianmentor', 200, 'Insättning', datetime.datetime(2024, 1, 9, 14, 52, 7, 58120))
+('Sebastianmentor', 150, 'Uttag', datetime.datetime(2024, 1, 9, 14, 52, 13, 255541))
+('Sebastianmentor', 50, 'Insättning', datetime.datetime(2024, 1, 9, 14, 52, 15, 810216))
+('KalleAnka', 300, 'Insättning', datetime.datetime(2024, 1, 9, 14, 52, 30, 904181))
+('KalleAnka', 200, 'Uttag', datetime.datetime(2024, 1, 9, 14, 52, 34, 142904))
