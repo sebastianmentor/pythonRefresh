@@ -10,11 +10,12 @@ def clear_screen():
 
 transaktions = []
 
-logg = []
 
 def logg_user_logg_in(username):
     time = datetime.datetime.now()
-    logg.append(f'{username}, {time.year}, {time.day}, {time.hour}, {time.minute}, {time.second}')
+    l = f'{username}, {time.year}, {time.day}, {time.hour}, {time.minute}, {time.second}'
+    with open('my_logg.txt', 'a', encoding='utf-8') as f:
+            f.write(l + '\n')
 
 users = {'KalleAnka': 'Hejsan123',
          'JanneLångben': 'password',
@@ -23,6 +24,32 @@ users = {'KalleAnka': 'Hejsan123',
 bankkonto = {'KalleAnka': 1000,
              'JanneLångben': 100, 
              'Sebastianmentor': 0}
+
+def create_new_user():
+    clear_screen()
+    for i in range(3,0,-1):
+        username = input("Ange nytt användarnamn: ")
+        if username in users:
+            print(f"Användaren finns redan! Du har {i-1} försök kvar!")
+        else:
+            clear_screen()
+            break
+    
+    while True:
+        new_password = input('Ange nytt lösenord: ')
+        confirm_password = input('Bekräfta lösenord: ')
+
+        if new_password == confirm_password:
+           break
+        print('Inkorrekt lösenord! Försök igen.')
+
+
+    users[username] = new_password
+    bankkonto[username] = 0
+
+    print(f"Ny användare med användarnamn {username} är skapat!")
+    print(f"Nytt konto skapat med 0 i saldo!")
+    input('Tryck enter för att gå tillbaka till menyn!')
 
 
 def is_logged_in(username):
@@ -91,21 +118,22 @@ def run():
     
     while True:
         clear_screen()
-        print('Välkomen \2\n1. Logga in\n2. Avsluta')
+        print('Välkomen \2\n1. Logga in\n2. Skapa ny användare\n0. Avsluta')
         choice = input('>>>')
 
         if choice == '1':
             logg_in()
+
         elif choice == '2':
+            create_new_user()
+
+        elif choice == '0':
             break
         else:
-            ...
+            print('Ogiltligt val \4')
 
 if __name__ == '__main__':
     run()
-    with open('my_logg.txt', 'w', encoding='utf-8') as f:
-        for l in logg:
-            f.write(l + '\n')
 
     with open('my_transaktion.txt', 'w', encoding='utf-8') as f:
         for t in transaktions:
